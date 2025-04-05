@@ -1,4 +1,4 @@
-module "gcp_vpc" {
+/* module "gcp_vpc" {
   source = "../gcp_vpc_module"
 }
 
@@ -37,4 +37,4 @@ resource "google_compute_instance" "public-instance-1" {
       
     }
   }
-}
+} */

@@ -1,4 +1,4 @@
-/* module "gcp_network_resources" {
+module "gcp_network_resources" {
   source = "../gcp_vpc_module"
 }
 
@@ -55,4 +55,4 @@ resource "google_compute_autoscaler" "private-autoscaler" {
             target = 0.8
         }
     }
-} */
+} 
