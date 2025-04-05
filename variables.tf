@@ -3,9 +3,9 @@
 //}
 
 variable "gcp_project" {
-    default = "jayanta-first-project"
+  default = "jayanta-first-project"
 }
 
 variable "gcp_region" {
-    default = "us-east1"
+  default = "us-east1"
 }
