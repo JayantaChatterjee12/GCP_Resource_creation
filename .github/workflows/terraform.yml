@@ -98,3 +98,8 @@ jobs:
       env:
         # Set the Terraform Cloud API token as an environment variable
         GOOGLE_CREDENTIALS: ${{ secrets.gcp_authentication }}
+    - name: Terraform destroy
+      run: terraform destroy -auto-approve -input=false
+      env:
+        # Set the Terraform Cloud API token as an environment variable
+        GOOGLE_CREDENTIALS: ${{ secrets.gcp_authentication }}
