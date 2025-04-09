@@ -24,12 +24,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Authenticate to GCP
-        uses: google-github-actions/auth@v1
-        env:
-          # Set the Google Cloud Platform authentication credentials as an environment variable
-          GOOGLE_CREDENTIALS: ${{ secrets.gcp_authentication }}
-
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
