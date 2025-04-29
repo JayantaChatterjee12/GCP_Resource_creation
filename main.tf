@@ -11,7 +11,7 @@ module "gcp_autoscalling" {
 terraform {
   required_version = ">= 1.0"  # Replace with your Terraform version
   backend "gcs" {
-    bucket = "tf_lock_file_storing_bucket_for_gcp"
+    bucket = "this-is-jayanta-bucket-for-testing"
     prefix  = "terraform/state"
     //region   = "your-region"   # Optional, but recommended
     # Configure your GCS credentials if not using Google Cloud IAM
