@@ -7,12 +7,17 @@ module "gcp_autoscalling" {
   source = "./modules/gcp_autoscalling_module"
 }
 
-//terraform {
-//  backend "gcs" {
-//    bucket = "tf_lock_file_storing_bucket_for_gcp"
-//    prefix = "envs/prod"
-//  }
-//}
+
+terraform {
+  required_version = ">= 1.0"  # Replace with your Terraform version
+  backend "gcs" {
+    bucket = "tf_lock_file_storing_bucket_for_gcp"
+    prefix  = "terraform/state"
+    //region   = "your-region"   # Optional, but recommended
+    # Configure your GCS credentials if not using Google Cloud IAM
+  }
+}
+
 //module "gcp_vm" {
 //  source = "./modules/gcp_vm_module"
 //}
