@@ -7,7 +7,6 @@ module "gcp_autoscalling" {
   source = "./modules/gcp_autoscalling_module"
 }
 
-
 terraform {
   backend "gcs" {
     bucket = "tf_lock_file_storing_bucket_for_gcp"
