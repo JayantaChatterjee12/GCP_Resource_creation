@@ -1,7 +1,7 @@
-provider "google" {
-  project = var.gcp_project
-  region  = var.gcp_region
-}
+//provider "google" {
+//  project = var.gcp_project
+//  region  = var.gcp_region
+//}
 
 module "gcp_autoscalling" {
   source = "./modules/gcp_autoscalling_module"

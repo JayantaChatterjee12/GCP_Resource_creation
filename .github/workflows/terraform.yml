@@ -1,4 +1,4 @@
-/* name: 'Terraform'
+name: 'Terraform'
 
 on:
   push:
@@ -32,7 +32,7 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init
+      run: terraform init -migrate-state 
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
@@ -58,4 +58,4 @@ jobs:
       run: terraform destroy -auto-approve -input=false
       env:
         # Set the Terraform Cloud API token as an environment variable
-        GOOGLE_CREDENTIALS: ${{ secrets.gcp_authentication }} */
+        GOOGLE_CREDENTIALS: ${{ secrets.gcp_authentication }} 
