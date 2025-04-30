@@ -77,3 +77,58 @@ resource "google_compute_autoscaler" "private-autoscaler" {
         }
     }
 } */
+
+resource "google_compute_global_address" "static-ip" {
+  name     = "lb-static-ip"
+}
+
+# http proxy
+resource "google_compute_target_http_proxy" "http-proxy" {
+  name     = "lb-target-http-proxy"
+  url_map  = google_compute_url_map.url-map.id
+}
+
+# url map
+resource "google_compute_url_map" "url-map" {
+  name            = "lb-url-map"
+  default_service = google_compute_backend_service.lb-backend-service.id
+}
+
+resource "google_compute_global_forwarding_rule" "lb_frontend" {
+  name                  = "lb-frontend"
+  target                = google_compute_target_http_proxy.http-proxy.self_link
+  ip_address            = google_compute_global_address.static-ip.id
+  port_range            = "80"
+  ip_protocol           = "TCP"
+  load_balancing_scheme = "EXTERNAL"
+}
+
+//resource "google_compute_target_pool" "lb_target_pool" {
+//  name = "lb-target-pool"
+//  health_checks = [google_compute_http_health_check.lb_health_check.self_link]
+//}
+
+resource "google_compute_http_health_check" "lb_health_check" {
+  name               = "lb-health-check"
+  check_interval_sec = 1
+  timeout_sec        = 1
+  healthy_threshold  = 1
+  unhealthy_threshold = 2
+  port               = 80
+  request_path       = "/"
+}
+
+resource "google_compute_backend_service" "lb-backend-service" {
+  name                    = "lbbackendservice"
+  protocol                = "HTTP"
+  port_name               = "http-port"
+  load_balancing_scheme   = "EXTERNAL"
+  timeout_sec             = 10
+  enable_cdn              = false
+  health_checks           = [google_compute_http_health_check.lb_health_check.id]
+  backend {
+    group           = google_compute_instance_group_manager.private-instance-group.instance_group
+    balancing_mode  = "UTILIZATION"
+    capacity_scaler = 1.0
+  }
+}
