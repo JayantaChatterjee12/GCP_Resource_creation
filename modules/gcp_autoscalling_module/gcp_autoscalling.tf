@@ -56,3 +56,24 @@ resource "google_compute_autoscaler" "private-autoscaler" {
         }
     }
 } 
+
+
+
+/* resource "google_compute_instance" "public-instance" {
+    name = "public-instance"
+    machine_type = "n1-standard-1"
+    zone = "us-east1-b"
+    boot_disk {
+        initialize_params {
+            image = "ubuntu-os-cloud/ubuntu-2004-lts"
+        }
+        auto_delete  = true
+    }
+    network_interface {
+        network = module.gcp_network_resources.network_name
+        subnetwork = module.gcp_network_resources.public_subnet_name
+        access_config {
+            //nat_ip = google_compute_address.my_static_ip.address
+        }
+    }
+} */

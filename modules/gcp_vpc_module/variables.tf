@@ -7,7 +7,7 @@ variable "vpc_name" {
 variable "ip_cidr_range" {
   description = "The IP CIDR range of the VPC"
   type        = string
-  default = "10.0.0.0/28"
+  default = "10.0.0.0/24"
 }
 
 variable "gcp_region" {
