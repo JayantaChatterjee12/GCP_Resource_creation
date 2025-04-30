@@ -4,10 +4,10 @@ provider "google" {
 }
 
 terraform {
-  required_version = ">= 1.0"  # Replace with your Terraform version
+  required_version = ">= 1.0" # Replace with your Terraform version
   backend "gcs" {
     bucket = "this-is-jayanta-bucket-for-testing"
-    prefix  = "terraform/state"
+    prefix = "terraform/state"
   }
 }
 
