@@ -1,7 +1,7 @@
 # Basic sample GCP_Resource_creation with Terraform with Github action
 
-# A basic terraform file will trigger to create GCP resources on Push action, when any changes pushed in github main branch. 
-# This proverss follows the CI/ CD process of applying terraform for creating resources in GCP cloud
+ A basic terraform file will trigger to create GCP resources on Push action, when any changes pushed in github main branch. 
+ This proverss follows the CI/ CD process of applying terraform for creating resources in GCP cloud
 
 # 🚀 GCP Resource Deployment using GitHub Actions
 
