@@ -21,3 +21,4 @@ This repository provides a simple example of how to automate GCP resource creati
 
 To follow DevSecOps process, used "Github Secrets" for authentiation
 
+To use the project, need to update the Github Secrets with your own credentials and create and update the main.tf file with a new GCP Storage bucket for storing remote state file of Terraform.
